@@ -1,41 +1,30 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.TreeSet;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        TreeSet<House> myHouseArrayList = new TreeSet<>();
-        House firstHouse = new House(190, 62000, "Bishkek", true);
-        House secondHouse = new House(250, 80000, "Osh", true);
-        House thirdHouse = new House(120, 50000, "Jalal-abad", false);
+        HashMap<Car, InfoCar> car = new HashMap<>();
+        car.put(new Car("04KG", "354ABC"),
+                new InfoCar(LocalDate.of(2008, 10, 6),
+                        "BMW", 25000, "Green"));
+        car.put(new Car("01KG", "777QQQ"),
+                new InfoCar(LocalDate.of(2020, 04, 02),
+                        "Tesla", 75000, "SuperWhite"));
+        car.put(new Car("02KG", "111OSH"),
+                new InfoCar(LocalDate.of(2022, 01, 02),
+                        "AUDI", 90000, "Red"));
+        car.put(new Car("03KG", "333SDR"),
+                new InfoCar(LocalDate.of(2021, 01, 06),
+                        "MercedesBenz", 120000, "Black"));
 
-        myHouseArrayList.add(firstHouse);
-        myHouseArrayList.add(secondHouse);
-        myHouseArrayList.add(thirdHouse);
-
-        for (House house : myHouseArrayList) {
-            System.out.println(house);
+        for (Map.Entry<Car, InfoCar> carInfoCarEntry : car.entrySet()) {
+            System.out.println(carInfoCarEntry.getKey() + " " + carInfoCarEntry.getValue());
         }
 
-
-        ArrayList<House> myHouseArrayList1 = new ArrayList<>();
-        House firstHouse1 = new House(190, 62000, "Bishkek", true);
-        House secondHouse1 = new House(250, 80000, "Osh", true);
-        House thirdHouse1 = new House(120, 50000, "Jalal-abad", false);
-        myHouseArrayList1.add(firstHouse1);
-        myHouseArrayList1.add(secondHouse1);
-        myHouseArrayList1.add(thirdHouse1);
-        for (House house : myHouseArrayList1) {
-            System.out.println(house);
-        }
-        PriceComparator myPriceComparator = new PriceComparator();
-        myHouseArrayList1.sort(myPriceComparator);
-        System.out.println("Sorted: ");
-        for (House house : myHouseArrayList1) {
-            System.out.println(house);
-        }
     }
 }
